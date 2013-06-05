@@ -1,0 +1,16 @@
+input[type="text"],
+button {
+    margin: 5px 0;
+    font-family: @font_family;
+    font-size: @font_size;
+    padding: 10px;
+    .rounded(5px);
+    border: 1px solid #ccc;
+}
+
+button {
+    .gradient(#aaa, #eee, #fff);
+}
+button:active {
+    .gradient(#fff, #eee, #eee);
+}

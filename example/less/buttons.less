@@ -1,0 +1,53 @@
+.button (@color1, @color2) {
+    background-color: @color1;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @color1), color-stop(100%, @color2));
+    background-image: -webkit-linear-gradient(top, @color1, @color2);
+    background-image: -moz-linear-gradient(top, @color1, @color2);
+    background-image: -ms-linear-gradient(top, @color1, @color2);
+    background-image: -o-linear-gradient(top, @color1, @color2);
+    background-image: linear-gradient(top, @color1, @color2);
+    border: 1px solid @color2;
+    border-bottom: 1px solid darken(@color1, 10%);
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 0 0 lighten(@color1, 10%);
+    box-shadow: inset 0 1px 0 0 lighten(@color1, 10%);
+    color: #fff;
+    padding: 7px 0 8px 0;
+    text-align: center;
+    text-shadow: 0 -1px 0 darken(@color1, 10%);
+    width: 100%;
+
+    &:hover {
+        background-color: darken(@color1, 5%);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, darken(@color1, 5%)), color-stop(100%, darken(@color2, 5%)));
+        background-image: -webkit-linear-gradient(top, darken(@color1, 5%), darken(@color2, 5%));
+        background-image: -moz-linear-gradient(top, darken(@color1, 5%), darken(@color2, 5%));
+        background-image: -ms-linear-gradient(top, darken(@color1, 5%), darken(@color2, 5%));
+        background-image: -o-linear-gradient(top, darken(@color1, 5%), darken(@color2, 5%));
+        background-image: linear-gradient(top, darken(@color1, 5%), darken(@color2, 5%));
+        -webkit-box-shadow: inset 0 1px 0 0 lighten(@color1, 5%);
+        box-shadow: inset 0 1px 0 0 lighten(@color1, 5%);
+        cursor: pointer;
+    }
+
+    &:active {
+        border: 1px solid darken(@color1, 18%);
+        border-bottom: 1px solid darken(@color1, 15%);
+        -webkit-box-shadow: inset 0 0 8px 4px darken(@color1, 11%), 0 1px 0 0 #eeeeee;
+        box-shadow: inset 0 0 8px 4px darken(@color1, 11%), 0 1px 0 0 #eeeeee;
+    }
+
+    &[disabled="disabled"] {
+        opacity: .5;
+    }
+
+}
+
+button.green {
+    .button(#7fbf4d, #63a62f);
+
+    margin: 10px 0;
+}
+button.blue {
+    .button(#67a4e9, #3587e4);
+}

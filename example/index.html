@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery TimeAutocomplete Example</title>
+
+    <!-- jQuery -->
+    <script src="lib/jquery.min.js" type="text/javascript"></script>
+
+    <!-- jQuery UI -->
+    <!-- only includes the Autocomplete plugin (and deps) in this jqueryui bundle -->
+    <script src="lib/jquery-ui/js/jquery-ui-1.10.2.custom.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="lib/jquery-ui/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css" media="all" />
+
+    <link rel="stylesheet/less" type="text/css" href="less/style.less" />
+    <link href="css/prism.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<a href="https://github.com/jboesch/TimeAutocomplete"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+<div id="container">
+
+        <h1>jQuery timeAutocomplete Plugin <span>by <a href="http://7shifts.com/" title="Online employee scheduling">7shifts.com</a></span></h1>
+
+        <h3 class="grey-line"><span>What is this?</span></h3>
+
+        <p>It's a time picker similar to how Google Calendar's time picker works for events. It's meant to be smart, sexy and intuitive.</p>
+
+        <p>Some things that make is super duper fantastic:</p>
+        <ul>
+            <li>Start time defaults to users current time (within your set <a href="#increment"><em>increment</em></a>).</li>
+            <li>Tabbing out of the field without selecting a time will cause it to make an educated guess. Try typing a badly formatted time like 115 or 1 or 1pm or 28 then tabbing out.</li>
+            <li>If the end time is less than the start time, evaluate it to the opposite am/pm of the start time. Example: 7:00AM - 5... 5 will default to PM.</li>
+            <li>Fetch time in H:i:s format (13:30:00) for comparing/validating. Done so by calling $(input).data('timeAutocomplete').getTime()</li>
+            <li>Uses placeholder attribute if detected, if not, it uses our own placeholder text.</li>
+            <li>Oh, and it's tested :) - see tests/index.html to run tests</li>
+        </ul>
+
+        <h3 class="grey-line"><span>Basic usage</span></h3>
+        <pre><code class="language-javascript">$('#basic-example').timeAutocomplete();</code></pre>
+
+        <input type="text" id="basic-example" />
+
+        <h3 class="grey-line"><span>Advanced usage #1</span></h3>
+        <p>Injecting an existing value and using 24hr as the formatter.</p>
+        <pre><code class="language-javascript">$('#from-24hr').timeAutocomplete({
+    formatter: '24hr',
+    value: '07:00:00'
+});
+
+$('#to-24hr').timeAutocomplete({
+    formatter: '24hr',
+    value: '09:30:00'
+});</code></pre>
+
+        From <input type="text" id="from-24hr" />
+        To <input type="text" id="to-24hr" /> <button id="show-24hr-time-format">Show getTime() value (H:i:s format)</button>
+
+
+    <h3 class="grey-line"><span>Advanced usage #2</span></h3>
+        <p>Using a 'from' and 'to' input. We use a 'from_selector' argument in the set of options on the 'to' field. This makes the time autocomplete aware of the time in the other
+        field. If the 'from' field is '8:00 AM' and we start typing into the 'to' field with '4', it will show us a list of 4 'PM' instead of 4 'AM' options.</p>
+            <pre><code class="language-javascript">$('#from-ampm').timeAutocomplete({
+    increment: 5,
+    value: '08:00:00'
+});
+
+$('#to-ampm').timeAutocomplete({
+    increment: 5,
+    from_selector: '#from-ampm',
+    value: '17:30:00' // likely populated from your database.
+});</code></pre>
+
+    From <input type="text" id="from-ampm" />
+    To <input type="text" id="to-ampm" /> <button id="show-ampm-time-format">Show getTime() value (H:i:s format)</button>
+
+    <h3 class="grey-line"><span>Advanced usage #3</span></h3>
+
+    <pre><code class="language-javascript">$('#from-french').timeAutocomplete({
+    formatter: 'french'
+});
+
+$('#to-french').timeAutocomplete({
+    formatter: 'french',
+    value: '17:00:00'
+});</code></pre>
+
+    From <input type='text' id="from-french" />
+    To <input type='text' id="to-french" /> <button id="show-french-time-format">Show getTime() value (H:i:s format)</button>
+
+    <h3 class="grey-line"><span>Initialization options</span></h3>
+        <p>Below is a set of options you can pass when you call $('#my-input').timeAutocomplete(options);</p>
+
+        <pre><code class="language-javascript">options = {</code></pre>
+        <table>
+            <thead>
+            <tr>
+                <th>Option key</th>
+                <th>Default value</th>
+                <th>Possible values</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a name="auto_complete"></a>auto_complete</td>
+                    <td>{ delay: 0, autoFocus: true, minLength: 0 } (object)</td>
+                    <td><a href="http://api.jqueryui.com/autocomplete/">View here</a>.</td>
+                    <td>Any options to over-ride jQuery UI autocomplete plugin.</td>
+                </tr>
+                <tr>
+                    <td><a name="formatter"></a>formatter</td>
+                    <td>ampm (string)</td>
+                    <td>ampm | 24hr | french</td>
+                    <td>The formatter we want to use</td>
+                </tr>
+                <tr>
+                    <td><a name="value"></a>value</td>
+                    <td>'' (string)</td>
+                    <td>'13:30:00'</td>
+                    <td>Allows you to pass in a 24hr (H:i:s) time to be formatted and displayed in the field. It's the same as calling $('#from').data('timeAutocomplete').setTime('13:30:00');</td>
+                </tr>
+                <tr>
+                    <td><a name="from_selector"></a>from_selector</td>
+                    <td>'' (string)</td>
+                    <td>#from</td>
+                    <td>You'll want to use this option on the #to element if you're using the
+                        'ampm' formatter. It applies a level of
+                        "smartness" when dealing with both from/to inputs. If your #from input is 8:00 AM then the user types in "5" into the #to input, it will give them possible increments in PM.</td>
+                </tr>
+                <tr>
+                    <td><a name="increment"></a>increment</td>
+                    <td>15 (int)</td>
+                    <td>5, 10, 15, 30, 60</td>
+                    <td>
+                        The increment you want the time dropdown to appear in. A 15 minute increment would produce: ['7:15 AM', '7:30 AM', '7:45 AM'].
+                    </td>
+                </tr>
+                <tr>
+                    <td><a name="start_hour"></a>start_hour</td>
+                    <td>0 (int)</td>
+                    <td>Any number on or between 0 and 24</td>
+                    <td>What hour you want start the selectable time list to start at.</td>
+                </tr>
+                <tr>
+                    <td><a name="end_hour"></a>end_hour</td>
+                    <td>24 (int)</td>
+                    <td>What hour you want the end of the selectable time list to end at.</td>
+                </tr>
+                <tr>
+                    <td><a name="blur_empty_populate"></a>blur_empty_populate</td>
+                    <td>true</td>
+                    <td>true | false</td>
+                    <td>If we blur from the input field and it's empty, populate it with our empty default value (see next line).</td>
+                </tr>
+                <tr>
+                    <td><a name="empty"></a>empty</td>
+                    <td>{
+                        h: '12',
+                        m: '00',
+                        sep: ':',
+                        postfix: ' PM'
+                        } (object)</td>
+                    <td></td>
+                    <td>The default empty value</td>
+                </tr>
+            </tbody>
+        </table>
+
+    <pre><code class="language-javascript">}</code></pre>
+
+        <h3 class="grey-line"><span>API</span></h3>
+        <p>Once you initialize timeAutocomplete() on an element, you have access to methods via data('timeAutocomplete').</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Arguments</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td><h3>destroy()</h3></td>
+                    <td>None</td>
+                    <td>Completely removes timeAutocomplete plugin from the input</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><pre><code class="language-javascript">$('#my-input').data('timeAutocomplete').destroy();</code></pre></td>
+                </tr>
+                <tr>
+                    <td><h3>getTime()</h3></td>
+                    <td>None</td>
+                    <td>Gets the time in H:i:s (13:30:00) format.</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><pre><code class="language-javascript">$('#my-input').data('timeAutocomplete').getTime();</code></pre></td>
+                </tr>
+                <tr>
+                    <td><h3>setTime(time)</h3></td>
+                    <td>time: '13:30:00'</td>
+                    <td>Sets the time by passing in a 24hr format. This will be formatted appropriately before being displayed.</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><pre><code class="language-javascript">$('#my-input').data('timeAutocomplete').setTime('13:30:00');</code></pre></td>
+                </tr>
+                <tr>
+                    <td><h3>setFormatter(formatter)</h3></td>
+                    <td>formatter: 'ampm' or '24hr' or 'french'</td>
+                    <td>Changes the formatter type on the fly.</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><pre><code class="language-javascript">$('#my-input').data('timeAutocomplete').setFormatter('24hr');</code></pre></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <h3 class="grey-line"><span>Requirements</span></h3>
+        <ul>
+            <li>jQuery (only tested with 1.9)</li>
+            <li>jQuery UI w/ Autocomplete plugin (only tested with 1.10.2)</li>
+        </ul>
+
+
+    </div>
+
+    <!-- only used for this demo -->
+    <script src="lib/less.js" type="text/javascript"></script>
+    <script src="lib/prism.js" type="text/javascript"></script>
+
+    <!-- Our TimeAutocomplete stuff -->
+    <script src="../src/jquery.timeAutocomplete.js" type="text/javascript"></script>
+    <script src="../src/formatters/ampm.js" type="text/javascript"></script>
+    <script src="../src/formatters/24hr.js" type="text/javascript"></script>
+    <script src="../src/formatters/french.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+
+        $('#show-ampm-time-format').click(function(){
+            var msg = 'from: ' + $('#from-ampm').data('timeAutocomplete').getTime() + "\n";
+            msg += 'to: ' + $('#to-ampm').data('timeAutocomplete').getTime();
+            alert(msg);
+        });
+
+        $('#show-french-time-format').click(function(){
+            var msg = 'from: ' + $('#from-french').data('timeAutocomplete').getTime() + "\n";
+            msg += 'to: ' + $('#to-french').data('timeAutocomplete').getTime();
+            alert(msg);
+        });
+
+        $('#show-24hr-time-format').click(function(){
+            var msg = 'from: ' + $('#from-24hr').data('timeAutocomplete').getTime() + "\n";
+            msg += 'to: ' + $('#to-24hr').data('timeAutocomplete').getTime();
+            alert(msg);
+        });
+
+        // basic
+        $('#basic-example').val('8:00 AM').timeAutocomplete();
+
+        // ampm
+        $('#from-ampm').timeAutocomplete({
+            increment: 5,
+            value: '08:00:00'
+        });
+
+        $('#to-ampm').timeAutocomplete({
+            from_selector: '#from-ampm',
+            increment: 5,
+            value: '17:30:00' // likely populated from your database.
+        });
+
+        // 24hr
+        $('#from-24hr').timeAutocomplete({
+            formatter: '24hr',
+            value: '07:00:00'
+        });
+
+        $('#to-24hr').timeAutocomplete({
+            formatter: '24hr',
+            value: '09:30:00'
+        });
+
+        // French
+        $('#from-french').timeAutocomplete({
+            formatter: 'french'
+        });
+
+        $('#to-french').timeAutocomplete({
+            formatter: 'french',
+            value: '17:00:00'
+        });
+
+    </script>
+
+</body>
+</html>
