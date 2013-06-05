@@ -1,0 +1,371 @@
+.clear {
+  clear: both;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+.clearfix {
+  display: inline-block;
+}
+html[xmlns] .clearfix {
+  display: block;
+}
+* html .clearfix {
+  height: 1%;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+table {
+  width: 100%;
+  font-size: 13px;
+}
+table thead th {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+table th,
+table td {
+  padding: 5px;
+}
+table tr td {
+  border: 1px solid #ccc;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]) {
+  display: none;
+}
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+a:hover,
+a:active {
+  outline: 0;
+}
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  /* Responsive images (ensure images don't scale beyond their parents) */
+
+  max-width: 100%;
+  /* Part 1: Set a maxium relative to the parent */
+
+  width: auto\9;
+  /* IE7-8 need help adjusting responsive images */
+
+  height: auto;
+  /* Part 2: Scale the height according to the width, otherwise you get stretching */
+
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+#map_canvas img,
+.google-maps img {
+  max-width: none;
+}
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+}
+button,
+input {
+  *overflow: visible;
+  line-height: normal;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+label,
+select,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+  cursor: pointer;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+@media print {
+  * {
+    text-shadow: none !important;
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  @page  {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/* This file was created to be share between the main site and marketing pages (restaurants.php, coffee.php etc) */
+@font-face {
+  font-family: 'ProximaNovaLight';
+  src: url('../fonts/proximanova-light-webfont.eot');
+  src: url('../fonts/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/proximanova-light-webfont.woff') format('woff'), url('../fonts/proximanova-light-webfont.ttf') format('truetype'), url('../fonts/proximanova-light-webfont.svg#proxima_novalight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ProximaNovaRegular';
+  src: url('../fonts/proximanova-regular-webfont.eot');
+  src: url('../fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/proximanova-regular-webfont.woff') format('woff'), url('../proximanova-regular-webfont.ttf') format('truetype'), url('../proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+input[type="text"],
+button {
+  margin: 5px 0;
+  font-family: 'ProximaNovaLight', 'Helvetica Neue', 'Helvetica', 'Arial';
+  font-size: 15px;
+  padding: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+button {
+  background: #aaaaaa;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eeeeee), color-stop(1, #ffffff));
+  background: -ms-linear-gradient(bottom, #eeeeee, #ffffff);
+  background: -moz-linear-gradient(center bottom, #eeeeee 0%, #ffffff 100%);
+  background: -o-linear-gradient(#ffffff, #eeeeee);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);
+}
+button:active {
+  background: #ffffff;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eeeeee), color-stop(1, #eeeeee));
+  background: -ms-linear-gradient(bottom, #eeeeee, #eeeeee);
+  background: -moz-linear-gradient(center bottom, #eeeeee 0%, #eeeeee 100%);
+  background: -o-linear-gradient(#eeeeee, #eeeeee);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#eeeeee', GradientType=0);
+}
+button.green {
+  background-color: #7fbf4d;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7fbf4d), color-stop(100%, #63a62f));
+  background-image: -webkit-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -moz-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -ms-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -o-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: linear-gradient(top, #7fbf4d, #63a62f);
+  border: 1px solid #63a62f;
+  border-bottom: 1px solid #66a039;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 0 0 #9acc73;
+  box-shadow: inset 0 1px 0 0 #9acc73;
+  color: #fff;
+  padding: 7px 0 8px 0;
+  text-align: center;
+  text-shadow: 0 -1px 0 #66a039;
+  width: 100%;
+  margin: 10px 0;
+}
+button.green:hover {
+  background-color: #72b240;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #72b240), color-stop(100%, #579229));
+  background-image: -webkit-linear-gradient(top, #72b240, #579229);
+  background-image: -moz-linear-gradient(top, #72b240, #579229);
+  background-image: -ms-linear-gradient(top, #72b240, #579229);
+  background-image: -o-linear-gradient(top, #72b240, #579229);
+  background-image: linear-gradient(top, #72b240, #579229);
+  -webkit-box-shadow: inset 0 1px 0 0 #8cc660;
+  box-shadow: inset 0 1px 0 0 #8cc660;
+  cursor: pointer;
+}
+button.green:active {
+  border: 1px solid #53822f;
+  border-bottom: 1px solid #5a8d33;
+  -webkit-box-shadow: inset 0 0 8px 4px #649c38, 0 1px 0 0 #eeeeee;
+  box-shadow: inset 0 0 8px 4px #649c38, 0 1px 0 0 #eeeeee;
+}
+button.green[disabled="disabled"] {
+  opacity: .5;
+}
+button.blue {
+  background-color: #67a4e9;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #67a4e9), color-stop(100%, #3587e4));
+  background-image: -webkit-linear-gradient(top, #67a4e9, #3587e4);
+  background-image: -moz-linear-gradient(top, #67a4e9, #3587e4);
+  background-image: -ms-linear-gradient(top, #67a4e9, #3587e4);
+  background-image: -o-linear-gradient(top, #67a4e9, #3587e4);
+  background-image: linear-gradient(top, #67a4e9, #3587e4);
+  border: 1px solid #3587e4;
+  border-bottom: 1px solid #3a89e3;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 0 0 #94bfef;
+  box-shadow: inset 0 1px 0 0 #94bfef;
+  color: #fff;
+  padding: 7px 0 8px 0;
+  text-align: center;
+  text-shadow: 0 -1px 0 #3a89e3;
+  width: 100%;
+}
+button.blue:hover {
+  background-color: #5197e6;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5197e6), color-stop(100%, #1f7ae1));
+  background-image: -webkit-linear-gradient(top, #5197e6, #1f7ae1);
+  background-image: -moz-linear-gradient(top, #5197e6, #1f7ae1);
+  background-image: -ms-linear-gradient(top, #5197e6, #1f7ae1);
+  background-image: -o-linear-gradient(top, #5197e6, #1f7ae1);
+  background-image: linear-gradient(top, #5197e6, #1f7ae1);
+  -webkit-box-shadow: inset 0 1px 0 0 #7db1ec;
+  box-shadow: inset 0 1px 0 0 #7db1ec;
+  cursor: pointer;
+}
+button.blue:active {
+  border: 1px solid #1f74d5;
+  border-bottom: 1px solid #247cdf;
+  -webkit-box-shadow: inset 0 0 8px 4px #3687e2, 0 1px 0 0 #eeeeee;
+  box-shadow: inset 0 0 8px 4px #3687e2, 0 1px 0 0 #eeeeee;
+}
+button.blue[disabled="disabled"] {
+  opacity: .5;
+}
+body {
+  background: #ffffff url(../img/gray_jean.png);
+  color: #333;
+  font-size: 15px;
+  line-height: 170%;
+  font-family: 'ProximaNovaLight', 'Helvetica Neue', 'Helvetica', 'Arial';
+  margin: 0;
+  text-shadow: 1px 1px 0 #fff;
+}
+a {
+  color: #333;
+}
+#container {
+  width: 700px;
+  margin: 30px auto 50px auto;
+}
+h1 {
+  text-align: center;
+}
+h1 span {
+  display: block;
+  margin: 10px 0;
+  font-style: italic;
+  font-size: 16px;
+}
+h3.grey-line {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+h3.grey-line:before {
+  border-top: 1px solid #ccc;
+  content: "";
+  margin: 0 auto;
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+}
+h3.grey-line span {
+  background: url(../img/gray_jean.png);
+  padding: 0 10px;
+}
