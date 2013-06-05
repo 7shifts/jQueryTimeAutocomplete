@@ -204,14 +204,14 @@ textarea {
 @font-face {
   font-family: 'ProximaNovaLight';
   src: url('../fonts/proximanova-light-webfont.eot');
-  src: url('../fonts/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/proximanova-light-webfont.woff') format('woff'), url('../fonts/proximanova-light-webfont.ttf') format('truetype'), url('../fonts/proximanova-light-webfont.svg#proxima_novalight') format('svg');
+  src: url('../fonts/proximanova-light-webfont.eot') format('embedded-opentype'), url('../fonts/proximanova-light-webfont.woff') format('woff'), url('../fonts/proximanova-light-webfont.ttf') format('truetype'), url('../fonts/proximanova-light-webfont.svg#proxima_novalight') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'ProximaNovaRegular';
   src: url('../fonts/proximanova-regular-webfont.eot');
-  src: url('../fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/proximanova-regular-webfont.woff') format('woff'), url('../proximanova-regular-webfont.ttf') format('truetype'), url('../proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+  src: url('../fonts/proximanova-regular-webfont.eot') format('embedded-opentype'), url('../fonts/proximanova-regular-webfont.woff') format('woff'), url('../proximanova-regular-webfont.ttf') format('truetype'), url('../proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
