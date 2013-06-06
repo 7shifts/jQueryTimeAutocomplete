@@ -80,6 +80,7 @@ describe("timeAutocomplete", function() {
         beforeEach(function(){
             sut.el = affix('input');
             spyOn($.fn, 'bind').andCallThrough();
+            spyOn($.fn, 'trigger');
             sut._bindEvents();
         });
 
@@ -108,6 +109,10 @@ describe("timeAutocomplete", function() {
             var ctx = {};
             $.fn.bind.argsForCall[2][1].call(ctx, e);
             expect(sut._blurAutocomplete).toHaveBeenCalledWith(e);
+        });
+
+        it('should trigger a blur event', function(){
+            expect($.fn.trigger).toHaveBeenCalledWith('blur.timeAutocomplete');
         });
 
     });
