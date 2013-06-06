@@ -60,11 +60,12 @@
         /*
          * Setup a filter when we type a key into this input.
          *
-         * @param {Object} el The DOM element
+         * @param {Object} el The jQuery element
          */
         hook_filterSource: function(el){
 
             var self = this;
+            el = el[0];
 
             return (function(times, self){
                 return function(req, responseFn){
@@ -209,7 +210,7 @@
             var min = time[1];
             var ampm = (hour >= 12) ? 'PM' : 'AM';
 
-            if(("" + hour + "").length == 2 && hour < 10){
+            if(hour.length == 2 && parseInt(hour, 10) < 10){
                 hour = hour.substr(1);
             }
 
@@ -357,16 +358,16 @@
             // Parse for hour and minute
             switch(num.length){
                 case 4:
-                    hour = parseInt(num[0] + num[1], 10);
-                    minute = parseInt(num[2] + num[3], 10);
+                    hour = parseInt(num.charAt(0) + num.charAt(1), 10);
+                    minute = parseInt(num.charAt(2) + num.charAt(3), 10);
                     break;
                 case 3:
-                    hour = parseInt(num[0], 10);
-                    minute = parseInt(num[1] + num[2], 10);
+                    hour = parseInt(num.charAt(0), 10);
+                    minute = parseInt(num.charAt(1) + num.charAt(2), 10);
                     break;
                 case 2:
                 case 1:
-                    hour = parseInt(num[0] + (num[1] || ''), 10);
+                    hour = parseInt(num.charAt(0) + (num.charAt(1) || ''), 10);
                     minute = 0;
                     break;
                 default:

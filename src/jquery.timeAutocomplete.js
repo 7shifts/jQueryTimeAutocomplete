@@ -51,7 +51,7 @@
 
         _callAutocomplete: function(){
 
-            this.options.auto_complete.source = this._callFormatterMethod('filterSource', this.el, function(req, responseFn){
+            this.options.auto_complete.source = this._callFormatterMethod('filterSource', [this.el], function(req, responseFn){
                 throw new Error("You must set a hook_filterSource method in your formatter.");
             });
 
@@ -251,7 +251,7 @@
          */
         _createStringFromFormat: function(obj){
 
-            var combined = obj.h + obj.sep + obj.m;
+            var combined = ("" + obj.h + "") + obj.sep + ("" + obj.m + "");
 
             if(obj.postfix){
                 combined += obj.postfix;
@@ -262,12 +262,16 @@
         },
 
         /*
-         * Pass an H:i:s time format in as the value: '' attribute on the element
+         * Pass an H:i:s time format in as the value: '' attribute on the element or 'current'
          */
-        _setCurrentTimeAsValue: function(){
+        _setValueAsTime: function(){
 
             if($.trim(this.el.val()) == '' && this.options.value){
                 this.setTime(this.options.value);
+            } else {
+                var time = this._getCurrentTimeAsValue();
+                this.el.val(time);
+                this._attacheUsableTimeData();
             }
 
         },
@@ -346,7 +350,7 @@
             this._calling_from_init = true;
             this.setFormatter();
             this._callAutocomplete();
-            this._setCurrentTimeAsValue();
+            this._setValueAsTime();
             this._bindEvents();
             this._setupPlaceholder();
 

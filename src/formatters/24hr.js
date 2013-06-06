@@ -95,11 +95,12 @@
         /*
          * Setup a filter when we type a key into this input.
          *
-         * @param {Object} el The DOM element
+         * @param {Object} el The jQuery element
          */
         hook_filterSource: function(el){
 
             var self = this;
+            el = el[0];
 
             return (function(times, self){
                 return function(req, responseFn){
