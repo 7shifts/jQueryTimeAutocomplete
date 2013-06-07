@@ -1,0 +1,16 @@
+{
+    "name": "jQueryTimeAutocomplete",
+    "title": "jQueryTimeAutocomplete",
+    "description": "A time autocomplete plugin similar to how Google Calendar's time autocomplete works.",
+    "version": "1.0.0",
+    "homepage": "http://7shifts.com/blog/better-time-drop-downs-for-scheduling-jquery-timeautocomplete/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/7shifts/jQueryTimeAutocomplete.git"
+    },
+    "devDependencies": {
+        "grunt": "0.4.1",
+        "grunt-contrib-uglify": "0.2.0",
+        "grunt-contrib-concat": "~0.3.0"
+    }
+}

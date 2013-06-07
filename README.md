@@ -37,3 +37,9 @@ $('#to-24hr').timeAutocomplete({
 
 ### More documentation and examples
 * http://7shifts.com/blog/better-time-drop-downs-for-scheduling-jquery-timeautocomplete/
+
+### Contributing
+* Run ```npm install``` to install dependencies (requires NodeJS).
+* Make changes to any of the .js files
+* Run ```grunt``` from the project root to compile
+* Commit and submit pull request
