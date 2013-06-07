@@ -72,6 +72,14 @@
         _bindEvents: function(){
 
             var self = this;
+            var allow_focus = true; /* IE fix */
+
+            $('body').on('click', 'ul.ui-autocomplete a', function(){
+                allow_focus = false;
+                setTimeout(function(){
+                    allow_focus = true;
+                }, 100);
+            });
 
             this.el
             .bind('keydown.' + namespace, function(e){
@@ -84,7 +92,9 @@
                 self._blurAutocomplete.apply(self, arguments);
             })
             .bind('focus.' + namespace, function(e){
-                self._focusAutocomplete.apply(self, arguments);
+                if(allow_focus){
+                    self._focusAutocomplete.apply(self, arguments);
+                }
             }).trigger('blur.' + namespace);
 
         },
