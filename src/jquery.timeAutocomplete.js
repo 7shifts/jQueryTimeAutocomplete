@@ -74,7 +74,7 @@
             var self = this;
             var allow_focus = true; /* IE fix */
 
-            $('body').on('click', 'ul.ui-autocomplete a', function(){
+            $('body').on('click.' + namespace, 'ul.ui-autocomplete a', function(){
                 allow_focus = false;
                 setTimeout(function(){
                     allow_focus = true;
