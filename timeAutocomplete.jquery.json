@@ -1,0 +1,26 @@
+{
+    "name": "timeAutocomplete",
+    "title": "jQuery Time Autocomplete",
+    "description": "A time autocomplete plugin similar to how Google Calendar's time autocomplete works.",
+    "keywords": [
+        "time",
+        "autocomplete"
+    ],
+    "version": "1.0.0",
+    "author": {
+        "name": "Jordan Boesch"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/7shifts/jQueryTimeAutocomplete/blob/master/MIT-LICENSE.txt"
+        }
+    ],
+    "bugs": "https://github.com/7shifts/jQueryTimeAutocomplete/issues",
+    "homepage": "http://7shifts.com/blog/better-time-drop-downs-jquery-timeautocomplete/",
+    "docs": "http://7shifts.com/blog/better-time-drop-downs-jquery-timeautocomplete/",
+    "download": "http://7shifts.com/blog/better-time-drop-downs-jquery-timeautocomplete/",
+    "dependencies": {
+        "jquery": ">=1.10"
+    }
+}
