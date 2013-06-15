@@ -98,9 +98,10 @@
                             var return_nil =
                                 // If we want to trim out some AM/PM slots based on our mind reading
                                 (trim_ampm_possibilities && (new RegExp(trim_ampm_possibilities, "gi")).test(item))
-                                    // If we type in "1", don't show "11" and "12" possibilities
-                                    || (is_one && item.substring(0, 2) != '1:');
-
+                                // If we type in "1", don't show "11" and "12" possibilities
+                                || (is_one && item.substring(0, 2) != '1:')
+                                || (~self_val.toLowerCase().indexOf('p') && !~item.toLowerCase().indexOf('p'))
+                                || (~self_val.toLowerCase().indexOf('a') && !~item.toLowerCase().indexOf('a'));
                             if(return_nil){
                                 return;
                             }
