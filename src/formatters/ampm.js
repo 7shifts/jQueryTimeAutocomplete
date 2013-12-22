@@ -215,8 +215,12 @@
                 hour = hour.substr(1);
             }
 
+            if(hour > 12){
+                hour -= 12;
+            }
+
             var time_obj = {
-                h: hour,
+                h: parseInt(hour, 10),
                 m: min,
                 sep: this.options.empty.sep,
                 postfix: ' ' + ampm

@@ -99,6 +99,34 @@ describe('formatter/ampm', function(){
 
     });
 
+    describe('hook_getTimeObjectFromHis', function(){
+
+        it('should return the proper formatted time when over 12pm', function(){
+
+            var Formatter = new $.timeAutocomplete.formatters.ampm(null, {});
+            expect(Formatter.hook_getTimeObjectFromHis('19:00:00')).toEqual({
+                h: 7,
+                m: '00',
+                sep: ':',
+                postfix : ' PM'
+            });
+
+        });
+
+        it('should return the proper formatted time when under 12pm', function(){
+
+            var Formatter = new $.timeAutocomplete.formatters.ampm(null, {});
+            expect(Formatter.hook_getTimeObjectFromHis('05:43:00')).toEqual({
+                h: 5,
+                m: '43',
+                sep: ':',
+                postfix : ' AM'
+            });
+
+        });
+
+    });
+
     describe('parseTime', function(){
 
         it('should parse any time into H:i:s format', function(){

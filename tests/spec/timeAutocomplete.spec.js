@@ -21,13 +21,12 @@ describe("timeAutocomplete", function() {
     describe('render', function(){
 
         beforeEach(function(){
-
             spyOn(sut, 'setFormatter');
             spyOn(sut, '_callFormatterMethod');
             spyOn(sut, '_callAutocomplete');
             spyOn(sut, '_bindEvents');
             spyOn(sut, '_setupPlaceholder');
-            spyOn(sut, '_setCurrentTimeAsValue');
+            spyOn(sut, '_setValueAsTime');
 
             sut.render();
         });
@@ -36,8 +35,8 @@ describe("timeAutocomplete", function() {
             expect(sut.setFormatter).toHaveBeenCalled();
         });
 
-        it('should call _setCurrentTimeAsValue', function(){
-            expect(sut._setCurrentTimeAsValue).toHaveBeenCalled();
+        it('should call _setValueAsTime', function(){
+            expect(sut._setValueAsTime).toHaveBeenCalled();
         });
 
         it('should call_bindEvents', function(){
@@ -65,7 +64,7 @@ describe("timeAutocomplete", function() {
 
         it('should call our callFormatterMethod with args', function(){
             expect(sut._callFormatterMethod.argsForCall[0][0]).toEqual('filterSource');
-            expect(sut._callFormatterMethod.argsForCall[0][1]).toEqual($el);
+            expect(sut._callFormatterMethod.argsForCall[0][1]).toEqual([$el]);
             expect(function(){ sut._callFormatterMethod.argsForCall[0][2]() }).toThrow('You must set a hook_filterSource method in your formatter.');
         });
 
