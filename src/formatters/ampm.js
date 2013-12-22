@@ -209,7 +209,7 @@
             var time = time_his.split(':');
             var hour = time[0];
             var min = time[1];
-            var ampm = (hour >= 12) ? 'PM' : 'AM';
+            var ampm = (hour >= 12) ? this.options.pm_text : this.options.am_text;
 
             if(hour.length == 2 && parseInt(hour, 10) < 10){
                 hour = hour.substr(1);
