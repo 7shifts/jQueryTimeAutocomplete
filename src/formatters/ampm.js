@@ -219,6 +219,10 @@
                 hour -= 12;
             }
 
+            if(hour == 0){
+                hour = 12;
+            }
+
             var time_obj = {
                 h: parseInt(hour, 10),
                 m: min,

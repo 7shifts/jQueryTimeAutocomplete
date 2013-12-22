@@ -125,6 +125,18 @@ describe('formatter/ampm', function(){
 
         });
 
+        it('should return the proper formatted time when under 12pm', function(){
+
+            var Formatter = new $.timeAutocomplete.formatters.ampm(null, {});
+            expect(Formatter.hook_getTimeObjectFromHis('00:43:00')).toEqual({
+                h: 12,
+                m: '43',
+                sep: ':',
+                postfix : ' AM'
+            });
+
+        });
+
     });
 
     describe('parseTime', function(){
