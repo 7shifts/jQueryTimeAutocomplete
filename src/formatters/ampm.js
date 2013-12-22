@@ -116,7 +116,12 @@
                     if(!a.length && (~val.indexOf('am') || ~val.indexOf('pm'))){
                         var restored_ampm = (~val.indexOf('am')) ? self.options.am_text : self.options.pm_text;
                         val = val.replace(/a|m|p/gi, '');
-                        self.main_instance.el.val(val.split(' ')[0] + ' ' + restored_ampm);
+
+                        var colon_ix = val.indexOf(':');
+                        var spots = val.split(' ')[0].substr(colon_ix);
+                        if(spots.length > 2 && colon_ix != 0){
+                            self.main_instance.el.val(val.split(' ')[0] + ' ' + restored_ampm);
+                        }
                     }
 
                 }
