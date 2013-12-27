@@ -107,7 +107,9 @@
 
         _focusAutocomplete: function(){
             var val = $.trim(this.el.val()).substr(0, 2);
-            this.el.autocomplete('search', val);
+            if(this.el.data('uiAutocomplete')){
+                this.el.autocomplete('search', val);
+            }
         },
 
         /*
@@ -145,7 +147,7 @@
          */
         _keyupAutocomplete: function(e){
 
-            if($.trim(this.el.val()) == ''){
+            if($.trim(this.el.val()) == '' && this.el.data('uiAutocomplete')){
                 this.el.autocomplete('enable');
             }
 
@@ -348,9 +350,9 @@
             this.el.removeData(namespace);
             this.el.removeData(time_data_prop);
             this.el.unbind('.' + namespace);
-            try {
+            if(this.el.data('uiAutocomplete')){
                 this.el.autocomplete('destroy');
-            } catch(e){}
+            }
         },
 
         /*
