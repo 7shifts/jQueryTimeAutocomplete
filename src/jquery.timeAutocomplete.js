@@ -348,7 +348,9 @@
             this.el.removeData(namespace);
             this.el.removeData(time_data_prop);
             this.el.unbind('.' + namespace);
-            this.el.autocomplete('destroy');
+            try {
+                this.el.autocomplete('destroy');
+            } catch(e){}
         },
 
         /*
