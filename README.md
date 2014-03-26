@@ -28,10 +28,10 @@ $('#from-24hr').timeAutocomplete({
     value: '07:00:00'
 });
 ```
+or
 ```
-$('#to-24hr').timeAutocomplete({
-    formatter: '24hr',
-    value: '09:30:00'
+$('#to-24hr').val('09:30:00').timeAutocomplete({
+    formatter: '24hr'
 });
 ```
 
