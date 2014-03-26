@@ -53,6 +53,42 @@ describe("timeAutocomplete", function() {
 
     });
 
+    describe('_setValueAsTime', function(){
+
+        beforeEach(function(){
+            spyOn(sut, 'setTime');
+            spyOn(sut, '_attacheUsableTimeData');
+            spyOn(sut, '_getCurrentTimeAsValue');
+
+        });
+
+        it('should not set time with options.value', function(){
+            sut.el = affix('input[value=""]');
+            sut.options.value = '03:40:00';
+            sut._setValueAsTime();
+            expect(sut.setTime).toHaveBeenCalledWith(sut.options.value);
+        });
+
+        it('should not set time (string)', function(){
+            sut.el = affix('input[value="some thing"]');
+            sut._setValueAsTime();
+            expect(sut.setTime).not.toHaveBeenCalled();
+        });
+
+        it('should not set the time (badly formed number)', function(){
+            sut.el = affix('input[value="03:00:"]');
+            sut._setValueAsTime();
+            expect(sut.setTime).not.toHaveBeenCalled();
+        });
+
+        it('should set the time', function(){
+            sut.el = affix('input[value="03:00:00"]');
+            sut._setValueAsTime();
+            expect(sut.setTime).toHaveBeenCalledWith('03:00:00');
+        });
+
+    });
+
     describe('_callAutocomplete', function(){
 
         beforeEach(function(){

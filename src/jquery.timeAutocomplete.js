@@ -278,14 +278,30 @@
          */
         _setValueAsTime: function(){
 
-            if($.trim(this.el.val()) == '' && this.options.value){
+            var val = $.trim(this.el.val());
+            var val_parts = val.split(':');
+
+            if(val == '' && this.options.value){
                 this.setTime(this.options.value);
-            } else {
+            }
+            else if(val_parts.length == 3 && this.isNumber(val_parts[0]) && this.isNumber(val_parts[1]) && this.isNumber(val_parts[2])){
+                this.setTime(val);
+            }
+            else {
                 var time = this._getCurrentTimeAsValue();
                 this.el.val(time);
                 this._attacheUsableTimeData();
             }
 
+        },
+
+        /*
+         * Check if its a number
+         *
+         * @param {String|Int} n
+         */
+        isNumber: function(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
         },
 
         /*
