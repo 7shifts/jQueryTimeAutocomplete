@@ -49,7 +49,23 @@ describe("timeAutocomplete", function() {
 
         it('should call _setupPlaceholder', function(){
             expect(sut._setupPlaceholder).toHaveBeenCalled();
-        })
+        });
+
+        it('should not call _setValueAsTime if this.options.auto_value is false', function(){
+            var $ta_el = affix('input');
+            var TimeAutocompleteInstance = new $.timeAutocomplete._raw($ta_el);
+            spyOn(TimeAutocompleteInstance, 'setFormatter');
+            spyOn(TimeAutocompleteInstance, '_callFormatterMethod');
+            spyOn(TimeAutocompleteInstance, '_callAutocomplete');
+            spyOn(TimeAutocompleteInstance, '_bindEvents');
+            spyOn(TimeAutocompleteInstance, '_setupPlaceholder');
+            spyOn(TimeAutocompleteInstance, '_setValueAsTime');
+
+            TimeAutocompleteInstance.options.auto_value = false;
+            TimeAutocompleteInstance.render();
+
+            expect(TimeAutocompleteInstance._setValueAsTime).not.toHaveBeenCalled();
+        });
 
     });
 

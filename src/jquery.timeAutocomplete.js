@@ -36,6 +36,7 @@
                 autoFocus: true,
                 minLength: 0
             },
+            auto_value: true,
             value: '',
             formatter: 'ampm'
         },
@@ -95,7 +96,11 @@
                 if(allow_focus){
                     self._focusAutocomplete.apply(self, arguments);
                 }
-            }).trigger('blur.' + namespace);
+            });
+
+            if(this.options.auto_value){
+                this.el.trigger('blur.' + namespace);
+            }
 
         },
 
@@ -380,7 +385,11 @@
             this._calling_from_init = true;
             this.setFormatter();
             this._callAutocomplete();
-            this._setValueAsTime();
+
+            if(this.options.auto_value){
+                this._setValueAsTime();
+            }
+
             this._bindEvents();
             this._setupPlaceholder();
 
