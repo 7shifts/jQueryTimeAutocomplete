@@ -47,6 +47,12 @@
          */
         initialize: function($el, opts){
             this.options = $.extend(true, {}, this.default_opts, opts);
+
+            // Some global options (if set)
+            if(typeof($.timeAutocompleteDefaults) !== 'undefined'){
+                this.options = $.extend(true, {}, this.options, $.timeAutocompleteDefaults);
+            }
+
             this.el = $el;
         },
 
