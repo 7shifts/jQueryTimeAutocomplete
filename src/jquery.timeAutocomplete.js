@@ -136,8 +136,9 @@
             // If they hit any of these keys DO NOT disable the auto complete, these
             // are acceptable key strokes.
             var ignore_keydowns = [
-                13, // enter key
+                8, // backspace
                 9, // tab
+                13, // enter key
                 38, // up arrow key
                 40 // down arrow key
             ];
