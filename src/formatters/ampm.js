@@ -109,8 +109,15 @@
                         });
                     }
 
-                    responseFn(a);
+                    if(self.options.match_24h_format) {
 
+                        if(self_val == 12) {
+                            var amArr = a.splice(0, 4),
+                                a = a.concat(amArr);
+                        }
+                    }
+
+                    responseFn(a);
                 }
             })(self.options.times, self);
 
@@ -126,6 +133,9 @@
             // Clean up 03:00 am
             if(val.charAt(0) == 0){
                 val = val.substr(1);
+                if(!val) {
+                    val = "0";
+                }
             }
 
             return val;
@@ -154,6 +164,15 @@
         hook_readMind: function(val){
 
             var am_pm = '';
+
+            if(this.options.match_24h_format) {
+                if(val == 12 || (val >= 1200 && val <= 1300)) {
+                    am_pm = 'PM';
+                } 
+                if (val == 0) {
+                    am_pm = 'AM';
+                }
+            }
 
             val = val.toLowerCase();
             if(this.options.from_selector && !~val.indexOf('a') && !~val.indexOf('p'))
