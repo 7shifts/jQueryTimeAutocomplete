@@ -184,7 +184,10 @@ describe('formatter/ampm', function(){
                 '25:60 PM': '2:50 PM',
                 '83 PM': '8:30 PM',
                 '27 PM': '2:07 PM',
-                '33 PM': '3:30 PM'
+                '33 PM': '3:30 PM',
+                '23': '11:00 PM',
+                '00': '12:00 AM',
+                '12': '12:00 PM'
             };
 
             for(var k in re){

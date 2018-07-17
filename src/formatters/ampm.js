@@ -354,6 +354,7 @@
                 minute,
                 format = format || 'H:i:s',
                 pm = time.match(/p/i) !== null,
+                am = time.match(/a/i) !== null,
                 num = time.replace(/[^0-9]/g, '');
 
             // Parse for hour and minute
@@ -375,10 +376,13 @@
                     return '';
             }
 
-            if(hour == 12 && pm === false){
+            // if 12 and am/pm not specified assume pm
+            if (hour == 12 && pm === false && am === false) {
+                hour = 12;
+                pm = true;
+            } else if (hour == 12 && pm === false) {
                 hour = 0;
-            }
-            else if(pm === true && hour > 0 && hour < 12){
+            } else if (pm === true && hour > 0 && hour < 12) {
                 hour += 12;
             }
 
