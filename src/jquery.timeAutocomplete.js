@@ -38,7 +38,8 @@
             },
             auto_value: true,
             value: '',
-            formatter: 'ampm'
+            formatter: 'ampm',
+            match_24h_format: false
         },
 
         /**
