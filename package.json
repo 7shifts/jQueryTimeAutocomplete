@@ -1,18 +1,23 @@
 {
-    "name": "jQueryTimeAutocomplete",
-    "title": "jQueryTimeAutocomplete",
-    "description": "A time autocomplete plugin similar to how Google Calendar's time autocomplete works.",
-    "version": "1.0.2",
-    "homepage": "http://7shifts.com/blog/better-time-drop-downs-for-scheduling-jquery-timeautocomplete/",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/7shifts/jQueryTimeAutocomplete.git"
-    },
-    "scripts": {
-        "build": "rollup --config",
-        "test": "npm run build && open ./tests/index.html"
-    },
-    "devDependencies": {
-        "rollup": "^0.63.5"
-    }
+  "name": "jQueryTimeAutocomplete",
+  "title": "jQueryTimeAutocomplete",
+  "description": "A time autocomplete plugin similar to how Google Calendar's time autocomplete works.",
+  "version": "1.0.2",
+  "homepage": "http://7shifts.com/blog/better-time-drop-downs-for-scheduling-jquery-timeautocomplete/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/7shifts/jQueryTimeAutocomplete.git"
+  },
+  "scripts": {
+    "build": "rollup --config",
+    "test": "npm run build && open ./tests/index.html",
+    "test:core": "jest ./tests/core"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.4.2",
+    "rollup": "^0.63.5",
+    "rollup-plugin-uglify": "^4.0.0"
+  }
 }
