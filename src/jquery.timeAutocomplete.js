@@ -5,12 +5,12 @@
  */
 
 (function($) {
-  /*
-     * TimeAutcomplete
-     *
-     * @constructor
-     * @param {Object} opts An object of options to over-ride the defaults
-     */
+  /**
+   * TimeAutcomplete
+   *
+   * @constructor
+   * @param {Object} opts An object of options to over-ride the defaults
+   */
   var namespace = "timeAutocomplete";
   var time_data_prop = namespace + ".time";
 
@@ -134,12 +134,12 @@
       }
     },
 
-    /*
-         * Keydown autocomplete event
-         *
-         * @param {Object} e Event object
-         * @param {HTMLElement} input The input we had the event performed on
-         */
+    /**
+     * Keydown autocomplete event
+     *
+     * @param {Object} e Event object
+     * @param {HTMLElement} input The input we had the event performed on
+     */
     _keydownAutocomplete: function(e) {
       var val = $.trim(this.el.val());
 
@@ -167,24 +167,24 @@
       }
     },
 
-    /*
-         * Keyup autocomplete event
-         *
-         * @param {Object} e Event object
-         * @param {HTMLElement} input The input we had the event performed on
-         */
+    /**
+     * Keyup autocomplete event
+     *
+     * @param {Object} e Event object
+     * @param {HTMLElement} input The input we had the event performed on
+     */
     _keyupAutocomplete: function(e) {
       if ($.trim(this.el.val()) == "" && this.el.data("uiAutocomplete")) {
         this.el.autocomplete("enable");
       }
     },
 
-    /*
-         * Blur autocomplete event
-         *
-         * @param {Object} e Event object
-         * @param {HTMLElement} input The input we had the event performed on
-         */
+    /**
+     * Blur autocomplete event
+     *
+     * @param {Object} e Event object
+     * @param {HTMLElement} input The input we had the event performed on
+     */
     _blurAutocomplete: function(e) {
       var val = $.trim(this.el.val());
       val = this._callFormatterMethod("blur", [val], val);
@@ -201,10 +201,10 @@
       this._attacheUsableTimeData();
     },
 
-    /*
-         * Hit a formatter hook to get at the date value, then store it in a data
-         * attribute for later if need be
-         */
+    /**
+     * Hit a formatter hook to get at the date value, then store it in a data
+     * attribute for later if need be
+     */
     _attacheUsableTimeData: function() {
       var val = $.trim(this.el.val());
       this.el.data(
@@ -243,16 +243,16 @@
       }
     },
 
-    /*
-         * Gets the formatter
-         */
+    /**
+     * Gets the formatter
+     */
     getFormatter: function() {
       return this._formatter;
     },
 
-    /*
-         * Gets the time in H:i:s format
-         */
+    /**
+     * Gets the time in H:i:s format
+     */
     getTime: function() {
       return this.el.data(time_data_prop) || "";
     },
@@ -300,9 +300,9 @@
       return combined;
     },
 
-    /*
-         * Pass an H:i:s time format in as the value: '' attribute on the element or 'current'
-         */
+    /**
+     * Pass an H:i:s time format in as the value: '' attribute on the element or 'current'
+     */
     _setValueAsTime: function() {
       var val = $.trim(this.el.val());
       var val_parts = val.split(":");
@@ -323,20 +323,20 @@
       }
     },
 
-    /*
-         * Check if its a number
-         *
-         * @param {String|Int} n
-         */
+    /**
+     * Check if its a number
+     *
+     * @param {String|Int} n
+     */
     isNumber: function(n) {
       return !isNaN(parseFloat(n)) && isFinite(n);
     },
 
-    /*
-         * Set the time by passing it a H:i:s format (13:30:00)
-         *
-         * @param {String} time 13:30:00
-         */
+    /**
+     * Set the time by passing it a H:i:s format (13:30:00)
+     *
+     * @param {String} time 13:30:00
+     */
     setTime: function(time) {
       var stripped_time = time.replace(/[^0-9.]/g, "");
       var matched = stripped_time.match(/^[0-9]+$/);
@@ -356,9 +356,9 @@
       }
     },
 
-    /*
-         * Populate the input with the current time value
-         */
+    /**
+     * Populate the input with the current time value
+     */
     _getCurrentTimeAsValue: function() {
       var formatter = this.getFormatter();
       var fake_date_data = [1987, 1, 17];
@@ -403,16 +403,16 @@
       }
     },
 
-    /*
-         * Get the current date
-         */
+    /**
+     * Get the current date
+     */
     _getCurrentDate: function() {
       return new Date();
     },
 
-    /*
-         * Destroy the bound event to the element
-         */
+    /**
+     * Destroy the bound event to the element
+     */
     destroy: function() {
       this.el.removeData(namespace);
       this.el.removeData(time_data_prop);
@@ -422,9 +422,9 @@
       }
     },
 
-    /*
-         * Render it out to the page
-         */
+    /**
+     * Render it out to the page
+     */
     render: function() {
       // Which formatter we're using.. 'ampm', 'french'?
       this._calling_from_init = true;
@@ -450,11 +450,11 @@
     _raw: TimeAutocomplete // exposed globally for the sake of testing it
   };
 
-  /*
-     * Wrap it all into a nice jQuery function
-     *
-     * @param {Object} opts The options passed to it when called (optional)
-     */
+  /**
+   * Wrap it all into a nice jQuery function
+   *
+   * @param {Object} opts The options passed to it when called (optional)
+   */
   $.fn.timeAutocomplete = function(opts) {
     // Do the nasty on each one.
     return this.each(function() {

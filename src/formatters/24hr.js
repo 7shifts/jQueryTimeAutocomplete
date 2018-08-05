@@ -4,22 +4,22 @@
   };
 
   $.timeAutocomplete.formatters["24hr"].prototype = {
-    /*
-         * The main instance that was created. Found on $('#el').data('timeAutocomplete')
-         * of that specific element. Gets stuffed in on initialize();
-         */
+    /**
+     * The main instance that was created. Found on $('#el').data('timeAutocomplete')
+     * of that specific element. Gets stuffed in on initialize();
+     */
     main_instance: null,
 
-    /*
-         * These get merged in later. We take the default_opts and the formatter_opts from
-         * initialize() and merge them into this options object.
-         */
+    /**
+     * These get merged in later. We take the default_opts and the formatter_opts from
+     * initialize() and merge them into this options object.
+     */
     options: {},
 
-    /*
-         * Some defaults to get over-ridden if needed. Can be done using
-         * $('#el').timeAutocomplete({ formatter: '24hr' } });
-         */
+    /**
+     * Some defaults to get over-ridden if needed. Can be done using
+     * $('#el').timeAutocomplete({ formatter: '24hr' } });
+     */
     default_opts: {
       increment: 15,
       start_hour: "00",
@@ -34,12 +34,12 @@
       }
     },
 
-    /*
-         * Initialize the formatter
-         *
-         * @param {Object} main_instance Instance of timeAutocomplete on that element
-         * @param {Object} formatter_opts Any options passed... $('#el').timeAutocomplete({ formatter: 'ampm', from_selector: ... });
-         */
+    /**
+     * Initialize the formatter
+     *
+     * @param {Object} main_instance Instance of timeAutocomplete on that element
+     * @param {Object} formatter_opts Any options passed... $('#el').timeAutocomplete({ formatter: 'ampm', from_selector: ... });
+     */
     initialize: function(main_instance, formatter_opts) {
       this.main_instance = main_instance;
       this.options = $.extend(true, {}, this.default_opts, formatter_opts);
@@ -50,12 +50,12 @@
       return this.main_instance._createStringFromFormat(this.options.empty);
     },
 
-    /*
-         * Get the timestamp on a time value
-         *
-         * @param {String} t The time (2:00 PM)
-         * @param {Array} fake_date_data [1987, 1, 17]
-         */
+    /**
+     * Get the timestamp on a time value
+     *
+     * @param {String} t The time (2:00 PM)
+     * @param {Array} fake_date_data [1987, 1, 17]
+     */
     hook_getTime: function(t, fake_date_data) {
       var time_parts = t.split(this.options.empty.sep);
       var h = time_parts[0];
@@ -70,12 +70,12 @@
       ).getTime();
     },
 
-    /*
-         * Get the H:is (13:30:00) time format and turn it into a time object
-         * that we can pass back to the main view.
-         *
-         * @param {String} time_his 13:30:00
-         */
+    /**
+     * Get the H:is (13:30:00) time format and turn it into a time object
+     * that we can pass back to the main view.
+     *
+     * @param {String} time_his 13:30:00
+     */
     hook_getTimeObjectFromHis: function(time_his) {
       var time = time_his.split(":");
       var hour = time[0];
@@ -90,11 +90,11 @@
       return time_obj;
     },
 
-    /*
-         * Setup a filter when we type a key into this input.
-         *
-         * @param {Object} el The jQuery element
-         */
+    /**
+     * Setup a filter when we type a key into this input.
+     *
+     * @param {Object} el The jQuery element
+     */
     hook_filterSource: function(el) {
       var self = this;
       el = el[0];
@@ -133,9 +133,9 @@
       })(self.options.times, self);
     },
 
-    /*
-         * If we blurred and it was an empty value.
-         */
+    /**
+     * If we blurred and it was an empty value.
+     */
     hook_blurEmpty: function() {
       if (this.options.blur_empty_populate) {
         return this.main_instance._createStringFromFormat(this.options.empty);
@@ -144,11 +144,11 @@
       }
     },
 
-    /*
-         * Where our formatting actually happens.
-         *
-         * @param {String} val The value we're formatting
-         */
+    /**
+     * Where our formatting actually happens.
+     *
+     * @param {String} val The value we're formatting
+     */
     hook_readMind: function(val) {
       val = val.toLowerCase();
 
@@ -219,10 +219,10 @@
       return new_num;
     },
 
-    /*
-         * Generate an array of times to pass to our autocomplete source.
-         * ['12h00', '12h15'] etc. Totally depends on the increment options set.
-         */
+    /**
+     * Generate an array of times to pass to our autocomplete source.
+     * ['12h00', '12h15'] etc. Totally depends on the increment options set.
+     */
     generateTimes: function() {
       if (!this.options.times.length) {
         var start_minute = 60;

@@ -6,22 +6,22 @@ import parse from "../core/AMPMParser";
   };
 
   $.timeAutocomplete.formatters.ampm.prototype = {
-    /*
-         * The main instance that was created. Found on $('#el').data('timeAutocomplete')
-         * of that specific element. Gets stuffed in on initialize();
-         */
+    /**
+     * The main instance that was created. Found on $('#el').data('timeAutocomplete')
+     * of that specific element. Gets stuffed in on initialize();
+     */
     main_instance: null,
 
-    /*
-         * These get merged in later. We take the default_opts and the formatter_opts from
-         * initialize() and merge them into this options object.
-         */
+    /**
+     * These get merged in later. We take the default_opts and the formatter_opts from
+     * initialize() and merge them into this options object.
+     */
     options: {},
 
-    /*
-         * Some defaults to get over-ridden if needed. Can be done using
-         * $('#el').timeAutocomplete({ formatter: 'ampm', from_selector: ... });
-         */
+    /**
+     * Some defaults to get over-ridden if needed. Can be done using
+     * $('#el').timeAutocomplete({ formatter: 'ampm', from_selector: ... });
+     */
     default_opts: {
       from_selector: "",
       increment: 15,
@@ -39,12 +39,12 @@ import parse from "../core/AMPMParser";
       }
     },
 
-    /*
-         * Initialize the formatter. Called from within TimeAutocomplete file.
-         *
-         * @param {Object} main_instance Instance of timeAutocomplete on that element
-         * @param {Object} formatter_opts Any options passed... $('#el').timeAutocomplete({ formatter: 'ampm', from_selector: ... });
-         */
+    /**
+     * Initialize the formatter. Called from within TimeAutocomplete file.
+     *
+     * @param {Object} main_instance Instance of timeAutocomplete on that element
+     * @param {Object} formatter_opts Any options passed... $('#el').timeAutocomplete({ formatter: 'ampm', from_selector: ... });
+     */
     initialize: function(main_instance, formatter_opts) {
       this.main_instance = main_instance;
       this.options = $.extend(true, {}, this.default_opts, formatter_opts);
@@ -55,11 +55,11 @@ import parse from "../core/AMPMParser";
       return this.main_instance._createStringFromFormat(this.options.empty);
     },
 
-    /*
-         * Setup a filter when we type a key into this input.
-         *
-         * @param {Object} el The jQuery element
-         */
+    /**
+     * Setup a filter when we type a key into this input.
+     *
+     * @param {Object} el The jQuery element
+     */
     hook_filterSource: function(el) {
       var self = this;
       el = el[0];
@@ -117,11 +117,11 @@ import parse from "../core/AMPMParser";
       })(self.options.times, self);
     },
 
-    /*
-         * When we blur on the input field. Make any corrections/modifications to the value
-         *
-         * @param {String} val The input value
-         */
+    /**
+     * When we blur on the input field. Make any corrections/modifications to the value
+     *
+     * @param {String} val The input value
+     */
     hook_blur: function(val) {
       // Clean up 03:00 am
       if (val.charAt(0) == 0) {
@@ -131,9 +131,9 @@ import parse from "../core/AMPMParser";
       return val;
     },
 
-    /*
-         * If we blurred and it was an empty value.
-         */
+    /**
+     * If we blurred and it was an empty value.
+     */
     hook_blurEmpty: function() {
       if (this.options.blur_empty_populate) {
         return this.main_instance._createStringFromFormat(this.options.empty);
@@ -142,11 +142,11 @@ import parse from "../core/AMPMParser";
       }
     },
 
-    /*
-         * Where our formatting actually happens.
-         *
-         * @param {String} val The value we're formatting
-         */
+    /**
+     * Where our formatting actually happens.
+     *
+     * @param {String} val The value we're formatting
+     */
     hook_readMind: function(val) {
       var am_pm = "";
 
@@ -162,21 +162,21 @@ import parse from "../core/AMPMParser";
       return this.getTimeObject(val, am_pm);
     },
 
-    /*
-         * Convert an '1:00 PM' to H:i:s so it's usable for storing in the DB.
-         *
-         * @param {String} val
-         */
+    /**
+     * Convert an '1:00 PM' to H:i:s so it's usable for storing in the DB.
+     *
+     * @param {String} val
+     */
     hook_getUsableTimeValue: function(val) {
       return this.parseTime(val);
     },
 
-    /*
-         * Get the timestamp on a time value
-         *
-         * @param {String} t The time (2:00 PM)
-         * @param {Array} fake_date_data [1987, 1, 17]
-         */
+    /**
+     * Get the timestamp on a time value
+     *
+     * @param {String} t The time (2:00 PM)
+     * @param {Array} fake_date_data [1987, 1, 17]
+     */
     hook_getTime: function(t, fake_date_data) {
       var time_parts = this.parseTime(t).split(this.options.empty.sep);
       var h = time_parts[0];
@@ -191,12 +191,12 @@ import parse from "../core/AMPMParser";
       ).getTime();
     },
 
-    /*
-         * Get the H:is (13:30:00) time format and turn it into a time object
-         * that we can pass back to the main view.
-         *
-         * @param {String} time_his 13:30:00
-         */
+    /**
+     * Get the H:is (13:30:00) time format and turn it into a time object
+     * that we can pass back to the main view.
+     *
+     * @param {String} time_his 13:30:00
+     */
     hook_getTimeObjectFromHis: function(time_his) {
       var time = time_his.split(":");
       var hour = time[0];
@@ -304,10 +304,10 @@ import parse from "../core/AMPMParser";
       return new_num;
     },
 
-    /*
-         * Generate an array of times to pass to our autocomplete source.
-         * ['12:00 AM', '12:15 AM'] etc. Totally depends on the start_hour and increment options set.
-         */
+    /**
+     * Generate an array of times to pass to our autocomplete source.
+     * ['12:00 AM', '12:15 AM'] etc. Totally depends on the start_hour and increment options set.
+     */
     generateTimes: function() {
       if (!this.options.times.length) {
         var start_minute = 60;
