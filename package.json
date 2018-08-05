@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build": "NODE_ENV=production rollup --config",
-    "test": "npm run build && open ./tests/index.html",
+    "test": "npm run test:core && npm run test:jquery",
+    "test:jquery": "npm run build && open ./tests/jquery/index.html",
     "test:core": "jest ./tests/core"
   },
   "devDependencies": {

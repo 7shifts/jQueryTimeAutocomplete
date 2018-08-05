@@ -1,4 +1,4 @@
-import parse from "../core/AMPMParser";
+import parse from "../../core/AMPMParser";
 
 (function($) {
   $.timeAutocomplete.formatters.ampm = function() {
