@@ -1,12 +1,12 @@
 {
-  "name": "jQueryTimeAutocomplete",
-  "title": "jQueryTimeAutocomplete",
-  "description": "A time autocomplete plugin similar to how Google Calendar's time autocomplete works.",
+  "name": "time-autocomplete",
+  "title": "Time Input",
+  "description": "A time autocomplete input similar to how Google Calendar's time autocomplete works.",
   "version": "2.0.0-dev",
-  "homepage": "http://7shifts.com/blog/better-time-drop-downs-for-scheduling-jquery-timeautocomplete/",
+  "homepage": "https://github.com/7shifts/jQueryTimeAutocomplete/tree/v2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/7shifts/jQueryTimeAutocomplete.git"
+    "url": "git+https://github.com/7shifts/jQueryTimeAutocomplete.git"
   },
   "scripts": {
     "build": "NODE_ENV=production rollup --config",
@@ -22,5 +22,16 @@
     "rollup": "^0.63.5",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-uglify": "^4.0.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/7shifts/jQueryTimeAutocomplete/issues"
+  },
+  "main": "src/index.js",
+  "directories": {
+    "example": "example",
+    "test": "tests"
+  },
+  "dependencies": {},
+  "author": "7shifts",
+  "license": "MIT"
 }
