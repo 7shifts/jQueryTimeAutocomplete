@@ -21,12 +21,12 @@
     "jest": "^23.4.2",
     "rollup": "^0.63.5",
     "rollup-plugin-babel": "^3.0.7",
-    "rollup-plugin-uglify": "^4.0.0"
+    "rollup-plugin-terser": "^5.1.1"
   },
   "bugs": {
     "url": "https://github.com/7shifts/jQueryTimeAutocomplete/issues"
   },
-  "main": "src/index.js",
+  "main": "ampm_parser.js",
   "directories": {
     "example": "example",
     "test": "tests"
